@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../index.html">BH Page</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="../index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">News</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="profile.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Contact</a>
+                        </li>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow-1 container py-3">
+        <form id="contactForm" class="mb-4">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="name" placeholder="Name" required>
+                <label for="name">Name</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+                <label for="email">Email</label>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label me-3" for="purpose">Purpose</label>
+
+                <input type="radio" class="btn-check" name="purpose" id="business" value="business" checked>
+                <label class="btn" for="business">Business</label>
+
+                <input type="radio" class="btn-check" name="purpose" id="personal" value="personal">
+                <label class="btn" for="personal">Personal</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <textarea class="form-control" placeholder="Type message here..." id="description" required></textarea>
+                <label for="description">Description</label>
+            </div>
+
+            <div class="mb-3 text-center">
+                <button type="submit" class="btn btn-success">Send</button>
+            </div>
+
+            <div id="message" class="mb-5"></div>
+        </form>
+
+        <h2 class="mb-4">Submitted Contacts</h2>
+        <table id="dataTable" class="table">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Purpose</th>
+                <th>Description</th>
+            </tr>
+        </table>
+    </main>
+
+    <footer class="bg-success text-white text-center py-3 mt-auto">
+        &copy; 2025 RMIT
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+    <script src="../script.js"></script>
+</body>
+
+</html>
