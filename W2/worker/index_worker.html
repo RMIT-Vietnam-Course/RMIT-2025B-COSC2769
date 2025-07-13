@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>With Worker</title>
+</head>
+
+<body>
+    <h2>With Worker: UI stays responsive.</h2>
+
+    <button onclick="startHeavyComputation()">
+        Start Heavy Computation
+    </button>
+
+    <button onclick="alert('Still clickable!')">
+        Click Me!
+    </button>
+
+    <p id="output"></p>
+
+    <script>
+        function startHeavyComputation() {
+            if (typeof (Worker) !== "undefined") {
+                let worker = new Worker("worker.js");
+
+                worker.postMessage("start");
+
+                worker.onmessage = function (e) {
+                    document.getElementById("output").textContent = "Done: " + e.data;
+                };
+            } else {
+                alert("Web Workers are not supported in your browser.");
+            }
+        }
+    </script>
+</body>
+
+</html>

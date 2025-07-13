@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>No Worker</title>
+</head>
+
+<body>
+    <h2>No Worker: UI will freeze!</h2>
+
+    <button onclick="startHeavyComputation()">
+        Start Heavy Computation
+    </button>
+
+    <button onclick="alert('Still clickable?')">
+        Click Me!
+    </button>
+
+    <p id="output"></p>
+
+    <script>
+        function startHeavyComputation() {
+            let sum = 0;
+            for (let i = 0; i < 10; i++) {
+                for (let i = 0; i < 1e9; i++) {
+                    sum += i;
+                }
+            }
+
+            document.getElementById("output").textContent = "Done: " + sum;
+        }
+    </script>
+</body>
+
+</html>
