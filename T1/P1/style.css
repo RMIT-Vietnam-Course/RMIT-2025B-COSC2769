@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 10px;
+}
+
+.label {
+    margin-right: 10px;
+}
+
+.form-control {
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.button {
+    padding: 10px;
+}
+
+h2 {
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.blue {
+    background-color: blue;
+    color: white;
+}
+
+.pink {
+    background-color: pink;
+    color: black;
+}
+
+.red {
+    background-color: red;
+    color: white;
+}
