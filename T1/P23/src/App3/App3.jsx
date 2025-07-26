@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.css'
-import { useState } from 'react';
-import CourseRow from './CourseRow';
+import { useRef, useState } from 'react';
+import CourseTable from './CourseTable';
 
 const courseList = [
     { name: 'Full Stack Development', score: 2 },
@@ -11,71 +11,49 @@ const courseList = [
 
 export default function App3() {
     const [courses, setCourses] = useState(courseList);
-    const [courseName, setCourseName] = useState('');
-    const [courseScore, setCourseScore] = useState('');
+    const courseNameRef = useRef('');
+    const courseScoreRef = useRef('');
 
     const handleDelete = (name) => setCourses(courses.filter(c => c.name !== name));
+
     const handleAdd = (e) => {
         e.preventDefault();
 
-        const score = parseInt(courseScore);
+        const score = Number(courseScoreRef.current.value);
+        const name = courseNameRef.current.value.trim();
 
-        if (!courseName || isNaN(score)) return;
+        if (!name || isNaN(score)) return;
 
-        const newCourse = {
-            name: courseName.trim(),
-            score: score
-        };
-
+        const newCourse = { name, score };
         setCourses([...courses, newCourse]);
-        setCourseName('');
-        setCourseScore('');
+
+        courseScoreRef.current.value = '';
+        courseNameRef.current.value = '';
     };
-
-    const courseRows = courses.map(c => <CourseRow key={c.name} course={c} onDelete={() => handleDelete(c.name)} />);
-
-    const totalGPA = courses.reduce((total, s) => total + s.score, 0);
-    const avgGPA = courses.length ? (totalGPA / courses.length).toFixed(2) : 0;
 
     return (
         <div className='container mt-4'>
             <h3 className='mb-2'>Learning Results</h3>
 
-            <table className='table table-bordered'>
-                <thead>
-                    <tr className='text-center'>
-                        <th>Course Name</th>
-                        <th>Score</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    {courseRows}
-                </tbody>
-            </table>
-
-            <p><strong>Average Score:</strong> {avgGPA}</p>
+            <CourseTable courseList={courses} onDeleteCourse={handleDelete} />
 
             <form onSubmit={handleAdd} className='mt-5'>
                 <div className='row'>
                     <div className='col'>
                         <input type='text'
-                            value={courseName}
+                            ref={courseNameRef}
                             placeholder="Name"
                             className='form-control'
                             required
-                            onChange={e => setCourseName(e.target.value)}
                         />
                     </div>
 
                     <div className='col'>
                         <input type="number"
-                            value={courseScore}
+                            ref={courseScoreRef}
                             placeholder="Score"
                             className='form-control'
                             required
-                            onChange={e => setCourseScore(e.target.value)}
                         />
                     </div>
                 </div>
