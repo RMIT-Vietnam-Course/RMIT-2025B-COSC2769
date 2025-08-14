@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 10px;
+}
+
+.label {
+    margin-right: 10px;
+}
+
+.form-control {
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.button {
+    padding: 10px;
+}
+
+h2 {
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.color-1 {
+    background-color: lightgreen;
+    color: black;
+}
+
+.color-2 {
+    background-color: lightyellow;
+    color: black;
+}
+
+.red {
+    background-color: red;
+    color: white;
+}
+
+.round-image {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
