@@ -8,9 +8,7 @@ const { customers, orders, products } = require('./data');
 app.use(cors());
 app.use(express.json());
 
-app.get('/customers', (req, res) => {
-    res.json(customers);
-});
+app.get('/customers', (req, res) => res.json(customers));
 
 app.get('/customers/:id', (req, res) => {
     const id = Number(req.params.id);
@@ -37,10 +35,6 @@ app.get('/customers/:id/total', (req, res) => {
     res.json({ total_price: total });
 });
 
-app.use((req, res) => {
-    res.status(404).json({ msg: 'not found' });
-});
+app.use((req, res) => res.status(404).json({ msg: 'not found' }));
 
-app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));

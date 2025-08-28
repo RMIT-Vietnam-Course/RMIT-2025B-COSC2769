@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPS Client</title>
+</head>
+
+<body>
+    <h2>Rock Paper Scissors</h2>
+    <p>Type R or P or S. Only your first message each round is counted.</p>
+
+    <div>
+        <input id="msg" placeholder="R or P or S" maxlength="1" />
+        <button id="send">Send</button>
+    </div>
+
+    <h3>Messages</h3>
+    <ul id="log"></ul>
+
+    <script>
+        const log = document.getElementById('log');
+        const input = document.getElementById('msg');
+        const btn = document.getElementById('send');
+
+        const ws = new WebSocket('ws://localhost:3003');
+
+        function addLog(msg) {
+            log.innerHTML += `<li>${msg}</li>`;
+        }
+
+        ws.addEventListener('open', () => addLog('Connected.'));
+        ws.addEventListener('message', (e) => addLog(e.data));
+        ws.addEventListener('close', () => addLog('Disconnected.'));
+
+        btn.addEventListener('click', () => {
+            const msg = input.value.trim().toUpperCase();
+
+            if (msg) ws.send(msg);
+
+            input.value = '';
+            input.focus();
+        });
+    </script>
+</body>
+
+</html>
