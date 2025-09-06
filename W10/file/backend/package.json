@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1",
+    "fs": "^0.0.1-security",
+    "mongodb": "^6.19.0",
+    "multer": "^2.0.2",
+    "path": "^0.12.7"
+  }
+}
