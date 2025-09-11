@@ -8,10 +8,10 @@ const room2 = new Set();
 
 const rooms = [room1, room2];
 
-wss.on("connection", function connection(ws) {
+wss.on("connection", (ws) => {
     ws.on("error", console.error);
 
-    ws.on("message", function message(data) {
+    ws.on("message", (data) => {
         data = `${data}`;  // Convert to string.
 
         // Special command.
